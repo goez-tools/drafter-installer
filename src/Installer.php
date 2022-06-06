@@ -60,7 +60,7 @@ class Installer
             }
 
             $io->write('    Fetching submodules');
-            $process = new Process('git submodule update --init --checkout --recursive');
+            $process = new Process(['git', 'submodule', 'update', '--init', '--checkout', '--recursive']);
             $process->setWorkingDirectory($targetDir);
             $process->setTimeout(null);
             $process->run(function ($type, $buffer) use ($io) {
@@ -71,7 +71,7 @@ class Installer
             });
 
             $io->write('    Compiling drafter (grab a coffee | -v for output)');
-            $process = new Process(self::getMake());
+            $process = new Process([self::getMake()]);
             $process->setWorkingDirectory($targetDir);
             $process->setTimeout(null);
             $process->run(function ($type, $buffer) use ($io) {
@@ -83,7 +83,7 @@ class Installer
 
             $fs->symlink($binTarget, $binSource);
 
-            $process = new Process('chmod +x drafter');
+            $process = new Process(['chmod', '+x', 'drafter']);
             $process->setWorkingDirectory($binDir);
             $process->run(function ($type, $buffer) use ($io) {
                 if (!$io->isVerbose()) {
