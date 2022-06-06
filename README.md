@@ -23,7 +23,7 @@ Add it to `scripts`:
 
 ```json
 "scripts": {
-    "install-drafter": "Hmaus\\Drafter\\Installer::installDrafter"
+    "install-drafter": "Goez\\Drafter\\Installer::installDrafter"
 }
 ```
 
