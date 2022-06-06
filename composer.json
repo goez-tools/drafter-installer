@@ -2,8 +2,11 @@
   "name": "goez/drafter-installer",
   "description": "Install drafter in your php project with ease",
   "type": "custom-installer",
+  "require": {},
   "require-dev": {
-    "composer/composer": "^1.2"
+    "composer/composer": "^2.2",
+    "symfony/process": ">=5.0",
+    "symfony/filesystem": ">=5.0"
   },
   "license": "MIT",
   "authors": [
@@ -13,7 +16,6 @@
     }
   ],
   "minimum-stability": "stable",
-  "require": {},
   "autoload": {
     "psr-4": {
       "Goez\\Drafter\\": "src"
