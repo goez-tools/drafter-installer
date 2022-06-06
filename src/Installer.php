@@ -1,6 +1,6 @@
 <?php
 
-namespace Hmaus\Drafter;
+namespace Goez\Drafter;
 
 use Composer\Package\Package;
 use Composer\Script\Event;

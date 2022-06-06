@@ -1,5 +1,5 @@
 {
-  "name": "hmaus/drafter-installer",
+  "name": "goez/drafter-installer",
   "description": "Install drafter in your php project with ease",
   "type": "custom-installer",
   "require-dev": {
@@ -16,7 +16,7 @@
   "require": {},
   "autoload": {
     "psr-4": {
-      "Hmaus\\Drafter\\": "src"
+      "Goez\\Drafter\\": "src"
     }
   }
 }
