@@ -71,7 +71,7 @@ class Installer
             });
 
             $io->write('    Compiling drafter (grab a coffee | -v for output)');
-            $process = new Process([self::getMake()]);
+            $process = new Process(self::getMake());
             $process->setWorkingDirectory($targetDir);
             $process->setTimeout(null);
             $process->run(function ($type, $buffer) use ($io) {
@@ -142,18 +142,17 @@ class Installer
     /**
      * Get gnu make command to use
      *
-     * @return string|null
+     * @return array|null
      */
     public static function getMake()
     {
         $os = self::getOS();
 
         $map = [
-            'macosx'  => 'make',
-            'windows' => null,
-            'linux'   => 'make',
-            'freebsd' => 'gmake',
-            'unknown' => null,
+            'macosx'  => ['./configure', '&&', 'make'],
+            'windows' => [],
+            'linux'   => ['./configure', '&&', 'make'],
+            'unknown' => [],
         ];
 
         return $map[$os];
