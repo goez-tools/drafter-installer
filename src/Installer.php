@@ -71,6 +71,17 @@ class Installer
             });
 
             $io->write('    Compiling drafter (grab a coffee | -v for output)');
+
+            $process = new Process(['./configure']);
+            $process->setWorkingDirectory($targetDir);
+            $process->setTimeout(null);
+            $process->run(function ($type, $buffer) use ($io) {
+                if (!$io->isVerbose()) {
+                    return;
+                }
+                echo $buffer;
+            });
+
             $process = new Process(self::getMake());
             $process->setWorkingDirectory($targetDir);
             $process->setTimeout(null);
@@ -149,9 +160,9 @@ class Installer
         $os = self::getOS();
 
         $map = [
-            'macosx'  => ['./configure', '&&', 'make'],
+            'macosx'  => ['make'],
             'windows' => [],
-            'linux'   => ['./configure', '&&', 'make'],
+            'linux'   => ['make'],
             'unknown' => [],
         ];
 
